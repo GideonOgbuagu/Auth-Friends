@@ -3,7 +3,6 @@ import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 
 const Login = (props) => {
-    console.log(props)
 const [account, setAccount] = useState({
     username: '',
     password: ''
@@ -24,15 +23,14 @@ const login = e => {
         .post("/api/login", account)
         .then(res => {
             //res.data
-            console.log(res)
             localStorage.setItem('token', JSON.stringify(res.data.payload))
             props.history.push('/friends');
-            setAccount({
-                username: '',
-                password: ''
-            })
+            // setAccount({
+            //     username: '',
+            //     password: ''
+            // })
         })
-        .catch(err => console.log(err.message))
+        .catch(err => console.log("@@@@@@", err))
 }
 
     return (
